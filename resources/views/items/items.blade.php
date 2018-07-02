@@ -1,6 +1,6 @@
 @if ($items)
     <div class="row">
-        @foreach ($items as $item)
+        @foreach ($items as $key => $item)
             <div class="item">
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="panel panel-default">
@@ -20,6 +20,15 @@
                                 @endif
                             </div>
                         </div>
+                        @if (isset($item->want_count))
+                            <div class="panel-footer">
+                                <p class="text-center">{{ $key+1 }}位: {{ $item->want_count}} Wants</p>
+                            </div>
+                        @elseif (isset($item->have_count))
+                            <div class="panel-footer">
+                                <p class="text-center">{{ $key+1 }}位: {{ $item->have_count}} Haves</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
